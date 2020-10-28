@@ -5,3 +5,6 @@ from . import models
 @admin.register(models.User)
 class CustomUserAdmin(admin.ModelAdmin):
     pass
+
+
+admin.site.register(models.User, CustomUserAdmin)
