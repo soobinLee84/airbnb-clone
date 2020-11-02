@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from . import models
 
 
@@ -13,7 +14,10 @@ class CustomUserAdmin(admin.ModelAdmin):
 
     """ Custom User Admin"""
 
+    # list display : admin list에서 항목에 해당하는 리스트를 보여준다
     # list_display = ("username", "gender", "language", "email", "currency", "superhost")
+
+    # list_filter : admin list에서 항목에 해당하는 필터링을 할 수있도록 구현 해 준다.
     # list_filter = ("superhost", "currency", "language")
 
 
