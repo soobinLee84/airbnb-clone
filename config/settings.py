@@ -42,6 +42,9 @@ PROJECT_APPS = [
     "users.apps.UsersConfig",
 ]
 
+# 다른사람이 만든 Applications를 넣도록 할것이다.
+THIRD_PARTY_APPS = []
+# 우리가 만든 폴더를 장고에게 인식시키려면 sttings.py의 INSTALLED_APPS에 등록 해줘야한다.
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
@@ -102,6 +105,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
+# memo : config는 마스터폴더 같은거고 나머지는 application 이다.
+# 우리가 장고를 사용하는게 아니라 장고가 우리코드를 사용하는것이다.
+# 장고는 데이터 베이스와 통신한다.
+# 장고는 ORM(object relational mapping)이라는것을 탑재하고있다.
+# ORM은 우리의 파이썬 코드를 SQL문으로 바꿔서 데이터베이스가 알아들을 수 있게 만든다.
+# mdels.py 에 넣는 모델을은 장고가 알아서 데이터베이스 테이블로 만들어준다. -> 이것을 모델이라 부른다.
+# Model은 fields로 이루어져 있다.(char field, Text field, data Field, boolean Field, Url field, image field..etc)
+# 설정 해 놓은 필드는 해당 필드에 맞춰 유효성 검사도 해준다.
+
+
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "Asia/Seoul"
@@ -118,4 +131,5 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
+# 우리가 만든 User를 쓰려고 AUTH_USER_MODEL를 바꿔줬음 (매번 바꿀 필요는 없다.)
 AUTH_USER_MODEL = "users.User"

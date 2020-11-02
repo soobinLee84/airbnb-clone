@@ -11,6 +11,8 @@ from django.db import models
 # 이와같이 하면 column이 설정되기전에 값들이 채워진다.
 
 
+# 상속의 개념
+# AbstractUser안에 있는 모든것을 User로 복붙해준다.admin도 마찬가지
 class User(AbstractUser):
 
     """ Custome User Model """
@@ -40,10 +42,11 @@ class User(AbstractUser):
     # blank는 웹프론트 단의 null 이라생각하면된다
     # null 값을 허용해도 프론트에서는 필수사항이라는 이유가 db에서만 null 허용이기에 blank를 써야 완벽한 null허용이 된다.
     # blank를 설정해야 form에 적용된다.
-    avatar = models.ImageField(null=True, blank=True)
-    gender = models.CharField(choices=GENDER_CHOICE, max_length=10, null=True)
-    bio = models.TextField(default="", blank=True)
-    birthdate = models.DateField(null=True)
+    # migrations는 항상 적게 유지하는것이 좋다
+    avatar = models.ImageField(blank=True)
+    gender = models.CharField(choices=GENDER_CHOICE, max_length=10)
+    bio = models.TextField(blank=True)
+    birthdate = models.DateField(blank=True, null=True)
     language = models.CharField(choices=LANGUAGE_CHOICES, max_length=2, blank=True)
     currency = models.CharField(choices=CURRENCY_CHOICES, max_length=3, blank=True)
     """
