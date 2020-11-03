@@ -1,3 +1,6 @@
+from django.db import models
+
+# Create your models here.
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -44,7 +47,7 @@ class User(AbstractUser):
     # blank를 설정해야 form에 적용된다.
     # migrations는 항상 적게 유지하는것이 좋다
     avatar = models.ImageField(blank=True)
-    gender = models.CharField(choices=GENDER_CHOICE, max_length=10)
+    gender = models.CharField(choices=GENDER_CHOICE, max_length=10, blank=True)
     bio = models.TextField(blank=True)
     birthdate = models.DateField(blank=True, null=True)
     language = models.CharField(choices=LANGUAGE_CHOICES, max_length=2, blank=True)
