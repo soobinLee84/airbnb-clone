@@ -38,7 +38,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-PROJECT_APPS = ["users.apps.UsersConfig"]
+PROJECT_APPS = ["users.apps.UsersConfig", "rooms.apps.RoomsConfig"]
 
 # 다른사람이 만든 Applications를 넣도록 할것이다.
 THIRD_PARTY_APPS = []
