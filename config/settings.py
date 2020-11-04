@@ -38,10 +38,14 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-PROJECT_APPS = ["users.apps.UsersConfig", "rooms.apps.RoomsConfig"]
+PROJECT_APPS = [
+    "core.apps.CoreConfig",
+    "users.apps.UsersConfig",
+    "rooms.apps.RoomsConfig",
+]
 
 # 다른사람이 만든 Applications를 넣도록 할것이다.
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = ["django_countries"]
 # 우리가 만든 폴더를 장고에게 인식시키려면 sttings.py의 INSTALLED_APPS에 등록 해줘야한다.
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
 
