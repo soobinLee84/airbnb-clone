@@ -22,28 +22,51 @@ class RoomType(AbstractItem):
 
     """RoomType Model Definition """
 
-    pass
+    class Meta:
+        verbose_name = "Room Type"
 
 
-class Amemity(AbstractItem):
+class Amenity(AbstractItem):
 
     """Amenity Model Definition"""
 
-    pass
+    # Meta class란 모델내의 모든 class들 안에 있는 class 다
+    class Meta:
+        verbose_name_plural = "Amenities"
 
 
 class Facility(AbstractItem):
 
     """ Facility Model Definition """
 
-    pass
+    # 정말 고맙게도 장고는 복수형을 자동으로 붙여준다 하지만
+    # 때에 따라 복수형이 달라지기 때문에
+    # Meta class의 attribute인 verbose_name_plural 을 따로 써서 설정해준다.
+    class Meta:
+        verbose_name_plural = "Facilites"
 
 
 class HouseRule(AbstractItem):
 
     """ HouseRule Model Definition """
 
-    pass
+    class Meta:
+        verbose_name = "House Rule"
+
+
+class Photo(core_models.TimeStapedModel):
+
+    """ Photo Model Definition """
+
+    caption = models.CharField(max_length=80)
+    file = models.ImageField()
+    # Room 이 지워지면 사진도 연결되어있기 때문에 함께 지워져야 함 그러니 CASCADE
+    # python은 위에서 아래로 읽기때문에 Photo class를 아래로 위치하게 해야하지만
+    # 이것은 번외로 스트링값으로 바꾸면 굳이 위치를 바꿀 필요가 없다.
+    room = models.ForeignKey("Room", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.caption
 
 
 class Room(core_models.TimeStapedModel):
@@ -70,14 +93,14 @@ class Room(core_models.TimeStapedModel):
     #          ON DELETE CASADE and also deletes the object containg the ForeignKey
     # CASADE는 폭포수로 부모가 삭제되면 자식들도 함께 삭제되는 폭포수 효과를 말한다.
     # 쉽게말해 유저가 삭제되면 유저가 올린 room이 함께 삭제된다는뜻
-    host = models.ForeignKey(user_models.User, on_delete=models.CASCADE)
+    host = models.ForeignKey("users.User", on_delete=models.CASCADE)
     # Foreignkey 오직 한가지 타입만 가진다. room type을 삭제해도 room을 삭제하고싶지 않다!
     # 한사람만 객실유형을 설정할 수 있는건 아니기 때문에 일단 null 처리한다.
-    room_type = models.ForeignKey(RoomType, on_delete=models.SET_NULL, null=True)
+    room_type = models.ForeignKey("RoomType", on_delete=models.SET_NULL, null=True)
     # 다대 다 관계 : 여러 entity가 관계를 이룬다.
-    amenities = models.ManyToManyField(Amemity)
-    facilities = models.ManyToManyField(Facility)
-    house_rules = models.ManyToManyField(HouseRule)
+    amenities = models.ManyToManyField("Amenity", blank=True)
+    facilities = models.ManyToManyField("Facility", blank=True)
+    house_rules = models.ManyToManyField("HouseRule", blank=True)
 
     def __str__(self):
         return self.name
