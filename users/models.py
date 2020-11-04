@@ -68,3 +68,4 @@ class User(AbstractUser):
     **configuration : (=set up) 환경설정과 같은것이다.
     """
     superhost = models.BooleanField(default=False)
+
