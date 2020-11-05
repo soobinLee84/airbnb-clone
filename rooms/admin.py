@@ -15,11 +15,29 @@ class RoomAdmin(admin.ModelAdmin):
 
     """ Room Admin Definition """
 
-    pass
+    list_display = (
+        "name",
+        "host",
+        "country",
+        "city",
+        "price",
+        "guests",
+        "beds",
+        "bedrooms",
+        "baths",
+        "check_in",
+        "check_out",
+        "instant_book",
+    )
+
+    list_filter = ("instant_book", "city", "country")
+    # icontains : 대소문자 구분이 없다 없어 그래 없다
+    search_fields = ("=city", "^host__username")
 
 
 @admin.register(models.Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    """" """
+    """" photoAdmin description """
 
     pass
+
