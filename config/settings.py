@@ -44,6 +44,7 @@ PROJECT_APPS = [
     "rooms.apps.RoomsConfig",
     "reviews.apps.ReviewsConfig",
     "reservations.apps.ReservationsConfig",
+    "lists.apps.ListsConfig",
 ]
 
 # 다른사람이 만든 Applications를 넣도록 할것이다.
