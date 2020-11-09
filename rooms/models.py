@@ -99,7 +99,7 @@ class Room(core_models.TimeStapedModel):
     # Foreignkey 오직 한가지 타입만 가진다. room type을 삭제해도 room을 삭제하고싶지 않다!
     # 한사람만 객실유형을 설정할 수 있는건 아니기 때문에 일단 null 처리한다.
     room_type = models.ForeignKey(
-        "RoomType", on_delete=models.SET_NULL, related_name="room_types", null=True
+        "RoomType", on_delete=models.SET_NULL, related_name="rooms", null=True
     )
     # 다대 다 관계 : 여러 entity가 관계를 이룬다.
     amenities = models.ManyToManyField("Amenity", related_name="rooms", blank=True)
