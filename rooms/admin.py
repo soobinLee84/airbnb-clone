@@ -52,6 +52,7 @@ class RoomAdmin(admin.ModelAdmin):
         "instant_book",
         "count_amenities",
         "count_photos",
+        "total_rating",
     )
 
     list_filter = (
@@ -69,7 +70,7 @@ class RoomAdmin(admin.ModelAdmin):
 
     # filter_horizontal
 
-    filger_horizontal = ("amenities", "facilities", "house_rules")
+    filter_horizontal = ("amenities", "facilities", "house_rules")
 
     # self : Rooomadmin
     # obj : 현재 row

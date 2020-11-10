@@ -39,8 +39,23 @@ class CustomUserAdmin(UserAdmin):
     # list display : admin list에서 항목에 해당하는 리스트를 보여준다
     # list_display = ("username", "gender", "language", "email", "currency", "superhost")
 
+    list_display = (
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+        "is_active",
+        "language",
+        "currency",
+        "superhost",
+        "is_staff",
+        "is_superuser",
+    )
+
     # list_filter : admin list에서 항목에 해당하는 필터링을 할 수있도록 구현 해 준다.
     # list_filter = ("superhost", "currency", "language")
+
+    list_filter = UserAdmin.list_filter + ("superhost",)
 
 
 # server가 실행되지 않아서 추가한 옵션
