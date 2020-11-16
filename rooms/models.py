@@ -112,7 +112,10 @@ class Room(core_models.TimeStapedModel):
     # 프론트 뿐만아니라 백 단에서도 리뷰의 평점을 보고싶기 때문에 모델에서 함수를 정의한다.
     def total_rating(self):
         all_reviews = self.reviews.all()
+        all_ratings = 0
+        if not len(all_reviews):
+            return "No reviews"
         for review in all_reviews:
-            print(review.rating_average())
-        return 0
+            all_ratings += review.rating_average()
+        return all_ratings / len(all_reviews)
 
