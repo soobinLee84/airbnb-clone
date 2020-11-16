@@ -36,3 +36,5 @@ class Review(core_models.TimeStapedModel):
             + self.value
         ) / 6
         return round(avg, 1)
+
+    rating_average.short_description = "Avg."
