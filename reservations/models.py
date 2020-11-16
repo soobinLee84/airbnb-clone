@@ -31,7 +31,13 @@ class Reservation(core_models.TimeStapedModel):
 
     def in_progress(self):
         now = timezone.now().date()
-        return now > self.check_in and now <self.check_out
+        return now > self.check_in and now < self.check_out
 
     #in_progress를 변경하고 싶다면, shortn description 써서 변경할 수 있다.
+    in_progress.boolean = True
+
+    def is_finished(self):
+        now = timezone.now().date()
+        return now > self.check_out
+    
     in_progress.boolean = True
