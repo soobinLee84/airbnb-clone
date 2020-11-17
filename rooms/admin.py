@@ -66,6 +66,11 @@ class RoomAdmin(admin.ModelAdmin):
         "country",
         "city",
     )
+
+    # foreign key를 좀 더 나은 방법으로 찾아 볼 수 있다.
+    # 이경우엔 host를 검색하게 도와준다 (user admin 인터페이스를 제공함)
+    raw_id_fields = ("host",)
+    
     # icontains : 대소문자 구분이 없다 없어 그래 없다
     search_fields = ("=city", "^host__username")
 
