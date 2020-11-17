@@ -109,7 +109,11 @@ class Room(core_models.TimeStapedModel):
     def __str__(self):
         return self.name
 
-    # 프론트 뿐만아니라 백 단에서도 리뷰의 평점을 보고싶기 때문에 모델에서 함수를 정의한다.
+    def save(self, *args, **kwarags):
+        self.city = str.capitalize(self.city)
+        super().save(*args, **kwarags)
+
+    # 프론트 뿐만아니라 백 단에 서도 리뷰의 평점을 보고싶기 때문에 모델에서 함수를 정의한다.
     def total_rating(self):
         all_reviews = self.reviews.all()
         all_ratings = 0
