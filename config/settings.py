@@ -23,6 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "*jmhfksybx_s%^kaw7$xb+z)2r0iay6hhjs$a6ul4$+fyn@296"
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# 프로덕션 모드인지 개발모드인지 알 수 있는 항목이다.
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -142,3 +143,5 @@ AUTH_USER_MODEL = "users.User"
 
 # 어디에 업로드하는지 파일의 경로 (사진 업로드에 사용하는 세팅)
 MEDIA_ROOT = os.path.join(BASE_DIR, "uploades")
+# URL that handles the media saved from MEDIA_ROOT
+MEDIA_URL = "/media/"
