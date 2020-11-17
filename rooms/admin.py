@@ -1,5 +1,6 @@
 from django.contrib import admin
 from . import models
+from django.utils.safestring import mark_safe
 
 
 @admin.register(models.RoomType, models.Facility, models.Amenity, models.HouseRule)
@@ -87,7 +88,13 @@ class RoomAdmin(admin.ModelAdmin):
 
 @admin.register(models.Photo)
 class PhotoAdmin(admin.ModelAdmin):
-    """" photoAdmin description """
+    """" phot oAdmin description """
 
-    pass
+    
+    list_display = ('__str__', 'get_thumbnail')
 
+    # 사용자에게 썸네일을 여기 어드민 패널에서 보여줄것이다.
+    def get_thumbnail(self, obj):
+        return mark_safe(f'<img width="60px" src="{obj.file.url}" />')
+
+    get_thumbnail.short_description = "Thumbnail"
