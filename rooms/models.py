@@ -59,7 +59,7 @@ class Photo(core_models.TimeStapedModel):
     """ Photo Model Definition """
 
     caption = models.CharField(max_length=80)
-    file = models.ImageField()
+    file = models.ImageField(upload_to="room_phtos")
     # Room 이 지워지면 사진도 연결되어있기 때문에 함께 지워져야 함 그러니 CASCADE
     # python은 위에서 아래로 읽기때문에 Photo class를 아래로 위치하게 해야하지만
     # 이것은 번외로 스트링값으로 바꾸면 굳이 위치를 바꿀 필요가 없다.

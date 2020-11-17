@@ -46,7 +46,7 @@ class User(AbstractUser):
     # null 값을 허용해도 프론트에서는 필수사항이라는 이유가 db에서만 null 허용이기에 blank를 써야 완벽한 null허용이 된다.
     # blank를 설정해야 form에 적용된다.
     # migrations는 항상 적게 유지하는것이 좋다
-    avatar = models.ImageField(blank=True)
+    avatar = models.ImageField(upload_to="avatars",blank=True)
     gender = models.CharField(choices=GENDER_CHOICE, max_length=10, blank=True)
     bio = models.TextField(blank=True)
     birthdate = models.DateField(blank=True, null=True)
