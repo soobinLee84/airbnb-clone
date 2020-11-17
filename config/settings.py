@@ -139,3 +139,6 @@ STATIC_URL = "/static/"
 
 # 우리가 만든 User를 쓰려고 AUTH_USER_MODEL를 바꿔줬음 (매번 바꿀 필요는 없다.)
 AUTH_USER_MODEL = "users.User"
+
+# 어디에 업로드하는지 파일의 경로 (사진 업로드에 사용하는 세팅)
+MEDIA_ROOT = os.path.join(BASE_DIR, "uploades")
