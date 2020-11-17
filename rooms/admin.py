@@ -15,11 +15,17 @@ class ItemAdmin(admin.ModelAdmin):
 
     pass
 
+# admin안의 admin이라고 보면된다.
+class PhtoInline(admin.TabularInline):
+
+    model = models.Photo
+
 
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
 
     """ Room Admin Definition """
+    inlines = (PhtoInline,)
 
     fieldsets = (
         (
