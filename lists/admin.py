@@ -4,7 +4,5 @@ from . import models
 
 @admin.register(models.List)
 class ListAdmin(admin.ModelAdmin):
-
-    """ ListAdmin Definition"""
-
-    pass
+        """ ListAdmin Definition"""
+        list_display = ("name","user","count_rooms")
